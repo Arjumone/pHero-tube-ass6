@@ -1,18 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>86-pHero tube</title>
-</head>
-<body>
-    <header>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="container mx-auto my-1">
+        <div class="navbar bg-base-100 mb-2">
+            <div class="navbar-start">
+              <img src="./Logo.png" alt="">
+            </div>
+            <div class="navbar-center">
+              <a id="sort-btn" class="btn btn-ghost normal-case text-xl bg-slate-300">Sort by view</a>
+            </div>
+            <div class="navbar-end">
+              <button onclick="handleBlogBtn()" id="navbar-btn" class="btn btn-ghost bg-red-500 hover:bg-red-600 text-white">Button</button>
+            </div>
+          </div>
+          <hr>
     </header>
     <main>
-        <section>
-            
-        </section>
+      <section>
+        <div class="tab-container w-full ">
+            <div class="tabs tabs p-5 py-5 gap-9 m-auto text-center flex justify-center font-semibold" id="tab-container">
+                <!-- <a class="tab tab-bordered">Tab 1</a> 
+                <a class="tab tab-bordered tab-active">Tab 2</a> 
+                <a class="tab tab-bordered">Tab 3</a> -->
+              </div>
+        </div>
+      </section>
+      <section>
+        <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-2">
+            <!-- <div class="card w-96 bg-base-100 shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                <div class="card-body">
+                  <h2 class="card-title">Shoes!</h2>
+                  <p>If a dog chews shoes whose shoes does he choose?</p>
+                  <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Buy Now</button>
+                  </div>
+                </div>
+              </div> -->
+        </div>
+      </section>
     </main>
-</body>
+    <script src="js/phero-api.js"></script>
+  </body>
 </html>
