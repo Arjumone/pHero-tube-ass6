@@ -27,15 +27,14 @@ const handleLoadCard = async (id) => {
   const data = await response.json();
   // console.log(data);
   const idData = data.data;
-  // console.log(idData);
+  console.log(idData);
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   idData.forEach((singleIdData) => {
-    const totalSecond = singleIdData.others.posted_date;
-    const hours = Math.floor(totalSecond / 60);
-
-    console.log(hours);
-    const minutes = (totalSecond % 60);
+    // console.log(singleIdData);
+    const totalSecond = singleIdData.others.posted_date/60;
+    const hours = Math.floor(totalSecond /60);
+    const minutes =Math.floor(totalSecond % 60);
 
     // console.log(singleIdData);
     const div = document.createElement("div");
