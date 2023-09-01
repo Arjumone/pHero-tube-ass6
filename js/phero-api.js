@@ -1,11 +1,7 @@
 const handleBlogBtn=()=>{
     window.location.href='blog.html'
-}; 
-// document.addEventListener('click',function(){
-//     document.getElementsByClassName('tab')
-// })
-
-const handleCardData=async()=>{
+};
+    const handleCardData=async()=>{
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/categories`)
     const data = await response.json()
     const allData = data.data
@@ -17,13 +13,13 @@ const handleCardData=async()=>{
     
     const divCard= document.createElement('div')
     divCard.innerHTML=`
-    <a onclick="handleLoadCard('${card.category_id}')" class="tab bg-gray-300 mb-2 rounded gap-8">${card.category}</a>
+    <a onclick="handleLoadCard('${card.category_id}')" class="tab bg-gray-300 hover:bg-red-600 hover:text-white mb-2 rounded gap-8">${card.category}</a>
     `
     tabContainer.appendChild(divCard)
 })
 };
-const handleLoadCard=async(id)=>{
-const response = await fetch(` https://openapi.programming-hero.com/api/videos/category/${id}`)
+    const handleLoadCard=async(id)=>{
+    const response = await fetch(` https://openapi.programming-hero.com/api/videos/category/${id}`)
     const data = await response.json()
     // console.log(data);
     const idData = data.data
@@ -31,12 +27,17 @@ const response = await fetch(` https://openapi.programming-hero.com/api/videos/c
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML= "";
     idData.forEach((singleIdData)=>{
-        // console.log(singleIdData);
+
+      const totalSecond = singleIdData.others.posted_date;
+      const hours = Math.floor(totalSecond / 60);
+      const minutes = totalSecond % 60;
+
+      // console.log(singleIdData);
         const div = document.createElement('div')
         div.innerHTML =`
         <div class="card bg-base-100 shadow-xl ">
                     <figure class=" relative rounded-lg"><img class="rounded-lg w-[400px] h-[250px]  " src="${singleIdData.thumbnail}" />
-                    <p class="absolute mt-48 ms-32 text-white">${singleIdData.others.posted_date}</p>
+                    <p id="convert" class="absolute mt-48 ms-32 text-white">${hours?hours:' '} hr ${minutes?minutes:" "} mins</p>
                     </figure>
                     <div class="card-body flex flex-col lg:flex-row ">
                     <img class="rounded-full h-14 w-14" src="${singleIdData.authors[0].profile_picture}"/>
@@ -70,6 +71,7 @@ const response = await fetch(` https://openapi.programming-hero.com/api/videos/c
                     <h2 class= "-mt-8 mb-1 text-center">${singleIdData.others.views} views</h2>
                   </div>
         `
+
         cardContainer.appendChild(div)
     }) 
 
@@ -92,6 +94,11 @@ const response = await fetch(` https://openapi.programming-hero.com/api/videos/c
     sortBtn.addEventListener("click",function(){
       sortBtView()
     })
+
+    
   }
+  
+  
+
 handleCardData()
 handleLoadCard('1000')
