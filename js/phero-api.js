@@ -32,10 +32,10 @@ const handleLoadCard = async (id) => {
   cardContainer.innerHTML = "";
   idData.forEach((singleIdData) => {
     const totalSecond = singleIdData.others.posted_date;
-    const hours = Math.floor(totalSecond / 60) + "hr";
+    const hours = Math.floor(totalSecond / 60);
 
     console.log(hours);
-    const minutes = (totalSecond % 60) + "mins";
+    const minutes = (totalSecond % 60);
 
     // console.log(singleIdData);
     const div = document.createElement("div");
@@ -44,7 +44,7 @@ const handleLoadCard = async (id) => {
                     <figure class=" relative rounded-lg"><img class="rounded-lg w-[400px] h-[250px]  " src="${
                       singleIdData.thumbnail}" />
                     ${totalSecond?`<p id="convert" class="absolute mt-48 ms-32 px-2 rounded bg-orange-200">${
-                      hours ? hours : " "}  ${minutes ? minutes : " "}</p>`:""}
+                      hours ? hours : " "}hr  ${minutes ? minutes : " "}mins ago</p>`:""}
                     </figure>
                     <div class="card-body flex flex-col lg:flex-row ">
                     <img class="rounded-full h-14 w-14 mb-3" src="${
